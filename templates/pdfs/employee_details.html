@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Details</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #c4dcf3;
+        border-left: 0;
+        border-right: 0;
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      th,
+      td {
+        padding: 10px;
+      }
+      th {
+        background-color: #427fef;
+        color: white;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #eef7ff;
+      }
+
+      tfoot {
+        text-align: left;
+      }
+      a,
+      a:hover,
+      a:focus {
+        text-decoration: none;
+        color: deeppink;
+        padding: 2px;
+      }
+      button {
+        margin: 5px;
+      }
+      .employees {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: burlywood;
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(162, 109, 18);
+      }
+    </style>
+  </head>
+  <body>
+    {% csrf_token %}
+    <div class="employees">
+      <h1>Employee Details</h1>
+      <button>
+        <a href="{% url 'delete-all-data-and-files' %}">DONE</a>
+      </button>
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Designation</th>
+          <th>Salary</th>
+        </thead>
+        <tbody>
+          {% for employee in employees %}
+          <tr>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>${{ employee.salary }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

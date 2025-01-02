@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF FILES LIST</title>
+
+     
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #c4dcf3;
+        border-left: 0;
+        border-right: 0;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 10px;
+      }
+      th {
+        background-color: #427fef;
+        color: white;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #eef7ff;
+      }
+
+      tfoot {
+        text-align: left;
+      }
+      a,
+      a:hover,
+      a:focus {
+        text-decoration: none;
+        color: deeppink;
+        padding: 2px;
+      }
+      button {
+        margin: 5px;
+      }
+
+      .pdfs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: burlywood;
+        
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(162, 109, 18);
+      }
+    </style> 
+  </head>
+  <body>
+    <h1>PDF FILES LIST</h1>
+    <div class="container pdfs">
+      <button>
+        <a href="{% url 'upload-pdf' %}"> Add More Files</a>
+      </button>
+      <button>
+        <a href="{% url 'extract-data' %}"> Get Details</a>
+      </button>
+      <table>
+        <thead>
+          <th colspan="2">Files</th>
+        </thead>
+        <tbody>
+          {% for pdf in pdfs %}
+          <tr>
+            <td>
+              <a href="{{ pdf.file.url }}" target="_blank">{{ pdf.file }}</a>
+            </td>
+            <td><button>
+              <a href="{% url 'pdf-delete' pdf.pk %}">Delete</a></td>
+            </button>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
