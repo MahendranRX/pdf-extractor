@@ -4,41 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PDF UPLOAD</title>
-    <style>
-      a,
-      a:hover,
-      a:focus {
-        text-decoration: none;
-        color: deeppink;
-      }
-      button {
-        margin: 2px;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      h1 {
-        text-align: center;
-        color: rgb(162, 109, 18);
-      }
-    </style>
+    <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
-  <body>
-    <h1>Upload Pdf Files</h1>
-    <div class="container">
+  <body class="upload">
+    <h1>PDF EXTRACTOR</h1>
+    <h2>🤩WELCOMES YOU!😍</h2>
+    <span class="container upload">
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %} {{ form.as_p }}
 
         <button type="submit">Upload PDF</button>
-      </form>
+      </form> 
 
       <button>
         <a href="{% url 'pdf-list' %}"> View Added Files</a>
       </button>
-    </div>
+    </span>
   </body>
 </html>

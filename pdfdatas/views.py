@@ -48,6 +48,9 @@ def pdf_file_delete(request, pk):
 
 
 def extract_datas(request):
+
+    Employee.objects.all().delete()
+
     # Set up FileSystemStorage with the location of the 'pdffiles' folder
     fs = FileSystemStorage(location=os.path.join(
         settings.MEDIA_ROOT, 'pdffiles'))
